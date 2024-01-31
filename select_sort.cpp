@@ -4,7 +4,7 @@ using namespace std;
 
 int main (void)
 {
-    int n, min, index, temp;
+    int n, min, index, temp, flag = 0;
     cout << "Total elements : ";
     cin >> n;
     int elements[n];
@@ -20,16 +20,21 @@ int main (void)
         min = elements[i];
         for (int j = i + 1; j  < n; j++)
         {
-            if (min > elements[j])
+            if (min >= elements[j])
             {
                 min = elements[j];
                 index = j;
+                flag = 1;
             }
         }
-        temp = elements[i];
-        elements[i] = min;
-        elements[index] = temp;
-
+        if (flag == 1)
+        {
+            temp = elements[i];
+            elements[i] = min;
+            elements[index] = temp;
+        }
+        
+        flag = 0;
 
     }
 
